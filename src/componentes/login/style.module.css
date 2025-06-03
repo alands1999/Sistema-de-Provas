@@ -1,0 +1,58 @@
+/*Container Principal*/
+.container_login{
+    width: 400px;
+    height: 600px;
+    box-shadow: 5px 5px 20px black;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Container com imagem*/
+.container_imagem, .formulario{
+    height: 50%;
+    width: 100%;
+}
+.computer {
+    width: 100%;
+    height: 100%;
+}
+
+/*Container formulário*/
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #39a5ed;
+}
+
+.titulo_form {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif   ;
+}
+
+.input_user, .input_password {
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+}
+
+.botao {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #262161;
+    width: 70px;
+}
+
+.botao:hover {
+    background-color: #048ed6;
+}
+
+/*bordas arredondadas*/
+.container_imagem, .computer, .container_login, .formulario {
+    border-radius: 2%;
+}
+
