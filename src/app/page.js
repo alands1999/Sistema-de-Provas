@@ -5,13 +5,14 @@ import Login from "@/componentes/login";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import usuarios from "@/componentes/dados/logins";
+import ErroLogin from "@/componentes/erroLogin";
 
 export default function Home() {
 
   const router = useRouter();
   const [user, setUser] = useState('');
   const [senha, setSenha] = useState('');
-  const [erro, setErro] = useState('');
+  const [erro, setErro] = useState(false);
 
 function retornarDado (nomeUsuario, senhaUsuario){
     let dadosUsuario = []; 
@@ -19,10 +20,12 @@ function retornarDado (nomeUsuario, senhaUsuario){
     usuarios.forEach((data) => {
       if((nomeUsuario === data.userName || nomeUsuario === data.email ) && senhaUsuario === data.password ){
         dadosUsuario.push(data);
+      } else {
+        dadosUsuario.push("Invalido");
       }
     })
 
-    return dadosUsuario;
+    return dadosUsuario[0];
 }
 
 
@@ -30,14 +33,17 @@ function retornarDado (nomeUsuario, senhaUsuario){
     e.preventDefault()
     let dados = retornarDado(user, senha);
 
-    if ((user === dados[0].userName || user === dados[0].email ) && senha === dados[0].password ) {
+    if ((user === dados.userName || user === dados.email ) && senha === dados.password ) {
       localStorage.setItem('logado', true)
-      localStorage.setItem('usuario', JSON.stringify(dados[0]))
+      localStorage.setItem('usuario', JSON.stringify(dados));
       router.push('/prova')
       
     } else {
-      setErro('Usuário ou senha incorretos');
-      alert(erro);
+        setErro(true);
+
+        setTimeout(() => {
+        setErro(false);
+        }, 2000);
     }
   }
 
@@ -50,6 +56,9 @@ function retornarDado (nomeUsuario, senhaUsuario){
       valuePassword = {senha}
       functionChangePassword = {(e) => setSenha(e.target.value)}
       />
+
+      <ErroLogin estilo={`container_principal ${erro ? "visible" : "hidden"}`} />
+      
     </main>
   );
 }

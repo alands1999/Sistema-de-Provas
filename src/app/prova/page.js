@@ -13,6 +13,7 @@ export default function Prova (){
 
     const router = useRouter();
     const usuario = JSON.parse(localStorage.getItem('usuario'));
+    
     const [perguntas, setPerguntas] = useState([]);
     const [atual, setAtual] = useState(0);
     const [respostas, setrespostas] = useState([]);
@@ -27,11 +28,14 @@ export default function Prova (){
     let dataDaProva = new Date(usuario.dataDaProva);
     let limiteProva = new Date(dataDaProva.getTime() + 2 * 60 * 60 * 1000);
     const diferencaMs = dataDaProva.getTime() - dataAtual.getTime();
+
     
         useEffect(() => {
             
-            const usuario = JSON.parse(localStorage.getItem("usuario"));
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
             if (!usuario || !usuario.dataDaProva) return;
+            
 
             const dataDaProva = new Date(usuario.dataDaProva);
 
@@ -41,13 +45,12 @@ export default function Prova (){
                 let limiteProva = new Date(dataDaProva.getTime() + 2 * 60 * 60 * 1000);
 
                 if (agora <= limiteProva && agora >= dataDaProva) {
-                clearInterval(interval);
-                setTempoRestante(0);
-                setTelaEspera(true); // Sai da tela de espera
+                    clearInterval(interval);
+                    setTempoRestante(0);
+                    setTelaEspera(true); // Sai da tela de espera
                 } else if (diferencaMs > 0) {
-                setTempoRestante(diferencaMs);
+                    setTempoRestante(diferencaMs);
                 } else {
-                    console.log("Passou do horário de prova")
                     clearInterval(interval);
                     setTelaEspera(false);
                 }
@@ -143,7 +146,7 @@ export default function Prova (){
         }
 
     if (!telaEspera) {
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
         const dataDaProva = new Date(usuario.dataDaProva);
 
         return (

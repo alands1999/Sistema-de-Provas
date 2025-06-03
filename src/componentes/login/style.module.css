@@ -5,6 +5,7 @@
     box-shadow: 5px 5px 20px black;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 /*Container com imagem*/

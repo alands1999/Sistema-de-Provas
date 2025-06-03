@@ -4,7 +4,7 @@ const usuarios = [
     userName: "alan",
     password: "1234567",
     email: "alan@gmail.com",
-    dataDaProva: "2025-06-01 11:49:00"
+    dataDaProva: "2025-06-02 19:05:00"
   },
   {
     id: "02",

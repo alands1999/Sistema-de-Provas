@@ -1,0 +1,30 @@
+.container_principal{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 150px;
+    background-color: #262161;
+    border-radius: 20px;
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.container_principal.visible {
+    opacity: 1;
+}
+
+.container_principal.hidden {
+    opacity: 0;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+}
